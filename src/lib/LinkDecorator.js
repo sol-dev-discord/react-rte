@@ -1,5 +1,6 @@
 /* @flow */
 import React from 'react';
+import validator from 'validator';
 import {ENTITY_TYPE} from 'draft-js-utils';
 
 import type {ContentBlock, ContentState} from 'draft-js';
@@ -14,8 +15,9 @@ type EntityRangeCallback = (start: number, end: number) => void;
 
 function Link(props: Props) {
   const {url} = props.contentState.getEntity(props.entityKey).getData();
+  const isUrl = validator.isURL(url, { protocols: ['http','https'] });
   return (
-    <a href={url} target='_blank'>{props.children}</a>
+    <a href={isUrl ? url : null} target={isUrl ? '_blank' : null}>{props.children}</a>
   );
 }
 
