@@ -1,10 +1,22 @@
 /* @flow */
-import ImageSpan from '../ui/ImageSpan';
+// import ImageSpan from '../ui/ImageSpan';
 import {ENTITY_TYPE} from 'draft-js-utils';
 
 import type {ContentBlock, ContentState} from 'draft-js';
 
 type EntityRangeCallback = (start: number, end: number) => void;
+
+function Image(props: Props) {
+  const {src} = props.contentState.getEntity(props.entityKey).getData();
+  return (
+    <span className='react-rte-imgWrap'>
+      <a href={src} target='_blank'>
+        <img src={src} />
+      </a>
+      <span className='react-rte-imgContent'>{props.children}</span>
+    </span>
+  );
+}
 
 function findImageEntities(contentBlock: ContentBlock, callback: EntityRangeCallback, contentState: ?ContentState) {
   contentBlock.findEntityRanges((character) => {
@@ -19,5 +31,5 @@ function findImageEntities(contentBlock: ContentBlock, callback: EntityRangeCall
 
 export default {
   strategy: findImageEntities,
-  component: ImageSpan,
+  component: Image,
 };
