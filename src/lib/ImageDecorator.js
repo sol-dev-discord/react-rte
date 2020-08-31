@@ -1,5 +1,6 @@
 /* @flow */
 // import ImageSpan from '../ui/ImageSpan';
+import React from 'react';
 import {ENTITY_TYPE} from 'draft-js-utils';
 
 import type {ContentBlock, ContentState} from 'draft-js';
