@@ -14,7 +14,7 @@ function Image(props: Props) {
   return (
     <span className='react-rte-imgWrap'>
       <a href={isUrl ? src : null} target={isUrl ? '_blank' : null}>
-        <img src={isUrl ? src : null} />
+        <img src={isUrl ? src : 'unknown'} />
       </a>
       <span className='react-rte-imgContent'>{props.children}</span>
     </span>
