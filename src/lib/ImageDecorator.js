@@ -10,7 +10,7 @@ type EntityRangeCallback = (start: number, end: number) => void;
 
 function Image(props: Props) {
   const {src} = props.contentState.getEntity(props.entityKey).getData();
-  const isUrl = validator.isURL(src, { protocols: ['http','https'] });
+  const isUrl = validator.isURL(src, { protocols: ['https'] });
   return (
     <span className='react-rte-imgWrap'>
       <a href={isUrl ? src : null} target={isUrl ? '_blank' : null}>
